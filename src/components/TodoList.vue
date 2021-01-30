@@ -1,9 +1,9 @@
 <template>
-  <div class="row align-items-center justify-content-start">
+  <div class="row align-items-center justify-content-center">
     <div class="col-12">
       <h2 class="mt-5">Todo List</h2>
     </div>
-    <div class="col-12">
+    <div class="col-12" style="max-width: 20rem">
       <p>
         Completed Tasks:
         {{
@@ -21,7 +21,7 @@
         }}
       </p>
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+      <div class="row row-cols-1 justify-content-center">
         <todo
           v-for="(todo, index) in todos"
           v-bind:todo="todo"
@@ -51,7 +51,4 @@ export default {
 </script>
 
 <style lang="scss">
-ul {
-  display: inline-block;
-}
 </style>
