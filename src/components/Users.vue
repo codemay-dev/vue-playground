@@ -1,7 +1,9 @@
 <template>
   <div class="row align-items-center justify-content-center">
     <div class="col-12">
-      <h3>Users:</h3>
+      <h2 class="mt-5">Users</h2>
+    </div>
+    <div class="col-12">
       <table class="table">
         <thead>
           <tr>

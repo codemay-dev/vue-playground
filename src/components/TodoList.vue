@@ -1,6 +1,9 @@
 <template>
   <div class="row align-items-center justify-content-start">
     <div class="col-12">
+      <h2 class="mt-5">Todo List</h2>
+    </div>
+    <div class="col-12">
       <p>
         Completed Tasks:
         {{
