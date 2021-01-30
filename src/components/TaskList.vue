@@ -1,50 +1,50 @@
 <template>
   <div class="row align-items-center justify-content-center">
     <div class="col-12">
-      <h2 class="mt-5">Todo List</h2>
+      <h2 class="mt-5">Task List</h2>
     </div>
     <div class="col-12" style="max-width: 20rem">
       <p>
         Completed Tasks:
         {{
-          todos.filter((todo) => {
-            return todo.done === true;
+          tasks.filter((task) => {
+            return task.done === true;
           }).length
         }}
       </p>
       <p>
         Pending Tasks:
         {{
-          todos.filter((todo) => {
-            return todo.done === false;
+          tasks.filter((task) => {
+            return task.done === false;
           }).length
         }}
       </p>
 
       <div class="row row-cols-1 justify-content-center">
-        <todo
-          v-for="(todo, index) in todos"
-          v-bind:todo="todo"
+        <task
+          v-for="(task, index) in tasks"
+          v-bind:task="task"
           :key="index"
-          v-on:delete-todo="deleteTodo"
-        ></todo>
+          v-on:delete-task="deleteTask"
+        ></task>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Todo from "./Todo";
+import Task from "./Task";
 
 export default {
-  props: ["todos"],
+  props: ["tasks"],
   components: {
-    Todo,
+    Task,
   },
   methods: {
-    deleteTodo(todo) {
-      const todoIndex = this.todos.indexOf(todo);
-      this.todos.splice(todoIndex, 1);
+    deleteTask(task) {
+      const taskIndex = this.tasks.indexOf(task);
+      this.tasks.splice(taskIndex, 1);
     },
   },
 };

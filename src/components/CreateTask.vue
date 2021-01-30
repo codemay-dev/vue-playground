@@ -6,7 +6,7 @@
         v-on:click="openForm"
         v-show="!isCreating"
       >
-        Add Todo
+        Add Task
       </button>
       <div class="col mb-4" v-show="isCreating">
         <div class="card h-100">
@@ -66,7 +66,7 @@ export default {
       if (this.titleText.length > 0 && this.projectText.length > 0) {
         const title = this.titleText;
         const project = this.projectText;
-        this.$emit("create-todo", {
+        this.$emit("create-task", {
           title,
           project,
           done: false,

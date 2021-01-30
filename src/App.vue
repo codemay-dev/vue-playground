@@ -12,9 +12,9 @@
           <button
             type="button"
             class="btn btn-outline-primary"
-            v-on:click="showTodo"
+            v-on:click="showTask"
           >
-            Todo
+            Task
           </button>
           <button
             type="button"
@@ -30,8 +30,8 @@
       </div>
     </div>
 
-    <todo-list v-bind:todos="todos" v-show="isTodolist"></todo-list>
-    <create-todo v-on:create-todo="addTodo" v-show="isTodolist"></create-todo>
+    <task-list v-bind:tasks="tasks" v-show="isTasklist"></task-list>
+    <create-task v-on:create-task="addTask" v-show="isTasklist"></create-task>
 
     <Users v-show="isUsers" />
 
@@ -45,39 +45,39 @@
 
 <script>
 import Users from "./components/Users.vue";
-import TodoList from "./components/TodoList";
-import CreateTodo from "./components/CreateTodo";
+import TaskList from "./components/TaskList";
+import CreateTask from "./components/CreateTask";
 
 export default {
   name: "SampleApp",
   components: {
     Users,
-    TodoList,
-    CreateTodo,
+    TaskList,
+    CreateTask,
   },
   data() {
     return {
-      isTodolist: true,
+      isTasklist: true,
       isUsers: false,
       isOther: false,
-      todos: [
+      tasks: [
         {
-          title: "Todo A",
+          title: "Task A",
           project: "Project A",
           done: false,
         },
         {
-          title: "Todo B",
+          title: "Task B",
           project: "Project B",
           done: true,
         },
         {
-          title: "Todo C",
+          title: "Task C",
           project: "Project C",
           done: false,
         },
         {
-          title: "Todo D",
+          title: "Task D",
           project: "Project D",
           done: false,
         },
@@ -85,23 +85,23 @@ export default {
     };
   },
   methods: {
-    showTodo() {
-      this.isTodolist = true;
+    showTask() {
+      this.isTasklist = true;
       this.isUsers = false;
       this.isOther = false;
     },
     showUsers() {
-      this.isTodolist = false;
+      this.isTasklist = false;
       this.isUsers = true;
       this.isOther = false;
     },
     showOther() {
-      this.isTodolist = false;
+      this.isTasklist = false;
       this.isUsers = false;
       this.isOther = true;
     },
-    addTodo(title) {
-      this.todos.push({
+    addTask(title) {
+      this.tasks.push({
         title: title.title,
         project: title.project,
         done: false,

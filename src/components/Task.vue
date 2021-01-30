@@ -1,21 +1,21 @@
 <template>
   <div class="col mb-4">
-    <div class="card" v-bind:class="{ 'border-success': todo.done }">
+    <div class="card" v-bind:class="{ 'border-success': task.done }">
       <!-- Show when not in editing mode -->
       <div class="card-body" v-show="!isEditing">
-        <h5 class="card-title">{{ todo.title }}</h5>
-        <p class="card-text">{{ todo.project }}</p>
+        <h5 class="card-title">{{ task.title }}</h5>
+        <p class="card-text">{{ task.project }}</p>
         <button
           class="btn btn-warning btn-sm mx-1"
-          v-show="!todo.done"
+          v-show="!task.done"
           v-on:click="showForm"
         >
           Edit
         </button>
         <button
           class="btn btn-danger btn-sm mx-1"
-          v-show="!todo.done"
-          v-on:click="deleteTodo(todo)"
+          v-show="!task.done"
+          v-on:click="deleteTask(task)"
         >
           Delete
         </button>
@@ -25,11 +25,11 @@
       <div class="card-body" v-show="isEditing">
         <div class="mb-3 text-start">
           <label class="form-label">Title</label>
-          <input class="form-control" type="text" v-model="todo.title" />
+          <input class="form-control" type="text" v-model="task.title" />
         </div>
         <div class="mb-3 text-start">
           <label class="form-label">Project</label>
-          <input class="form-control" type="text" v-model="todo.project" />
+          <input class="form-control" type="text" v-model="task.project" />
         </div>
       </div>
 
@@ -43,14 +43,14 @@
         </button>
         <button
           class="btn btn-outline-success mx-1"
-          v-show="!isEditing && todo.done"
+          v-show="!isEditing && task.done"
           disabled
         >
           Completed
         </button>
         <button
           class="btn btn-outline-danger mx-1"
-          v-show="!isEditing && !todo.done"
+          v-show="!isEditing && !task.done"
         >
           Pending
         </button>
@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  props: ["todo"],
+  props: ["task"],
   data() {
     return {
       isEditing: false,
@@ -74,8 +74,8 @@ export default {
     hideForm() {
       this.isEditing = false;
     },
-    deleteTodo(todo) {
-      this.$emit("delete-todo", todo);
+    deleteTask(task) {
+      this.$emit("delete-task", task);
     },
   },
 };
