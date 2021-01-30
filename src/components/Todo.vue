@@ -1,6 +1,6 @@
 <template>
   <div class="col mb-4">
-    <div class="card h-100">
+    <div class="card h-100" v-bind:class="{ 'border-success': todo.done }">
       <!-- Show when not in editing mode -->
       <div class="card-body" v-show="!isEditing">
         <h5 class="card-title">{{ todo.title }}</h5>
@@ -26,10 +26,16 @@
           <label class="form-label">Project</label>
           <input class="form-control" type="text" v-model="todo.project" />
         </div>
-        <button class="btn btn-primary" v-on:click="hideForm">Close</button>
       </div>
 
       <div class="card-footer">
+        <button
+          class="btn btn-primary"
+          v-show="isEditing"
+          v-on:click="hideForm"
+        >
+          Close
+        </button>
         <button
           class="btn btn-success mx-1"
           v-show="!isEditing && todo.done"
