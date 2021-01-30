@@ -71,7 +71,6 @@ export default {
           project,
           done: false,
         });
-        this.newTodoText = "";
       }
       this.isCreating = false;
     },

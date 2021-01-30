@@ -31,7 +31,7 @@
     </div>
 
     <todo-list v-bind:todos="todos" v-show="isTodolist"></todo-list>
-    <create-todo v-on:add-todo="addTodo" v-show="isTodolist"></create-todo>
+    <create-todo v-on:create-todo="addTodo" v-show="isTodolist"></create-todo>
 
     <Users v-show="isUsers" />
 
@@ -100,10 +100,10 @@ export default {
       this.isUsers = false;
       this.isOther = true;
     },
-    addTodo(title, project) {
+    addTodo(title) {
       this.todos.push({
-        title,
-        project,
+        title: title.title,
+        project: title.project,
         done: false,
       });
     },
