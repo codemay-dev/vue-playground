@@ -1,15 +1,20 @@
 <template>
   <div class="col mb-4">
-    <div class="card h-100" v-bind:class="{ 'border-success': todo.done }">
+    <div class="card" v-bind:class="{ 'border-success': todo.done }">
       <!-- Show when not in editing mode -->
       <div class="card-body" v-show="!isEditing">
         <h5 class="card-title">{{ todo.title }}</h5>
         <p class="card-text">{{ todo.project }}</p>
-        <button class="btn btn-warning btn-sm mx-1" v-on:click="showForm">
+        <button
+          class="btn btn-warning btn-sm mx-1"
+          v-show="!todo.done"
+          v-on:click="showForm"
+        >
           Edit
         </button>
         <button
           class="btn btn-danger btn-sm mx-1"
+          v-show="!todo.done"
           v-on:click="deleteTodo(todo)"
         >
           Delete
@@ -37,13 +42,16 @@
           Close
         </button>
         <button
-          class="btn btn-success mx-1"
+          class="btn btn-outline-success mx-1"
           v-show="!isEditing && todo.done"
           disabled
         >
           Completed
         </button>
-        <button class="btn btn-info mx-1" v-show="!isEditing && !todo.done">
+        <button
+          class="btn btn-outline-danger mx-1"
+          v-show="!isEditing && !todo.done"
+        >
           Pending
         </button>
       </div>
