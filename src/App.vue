@@ -2,7 +2,7 @@
   <div id="app" class="container-fluid">
     <header class="row align-items-center justify-content-center mt-5">
       <div class="col-12">
-        <h1>My Fun VueJS Playground</h1>
+        <h1>My Vue.js Playground</h1>
       </div>
     </header>
 
@@ -14,7 +14,7 @@
             class="btn btn-outline-primary"
             v-on:click="showTask"
           >
-            Task
+            Tasks
           </button>
           <button
             type="button"
@@ -23,8 +23,8 @@
           >
             Users
           </button>
-          <button type="button" class="btn btn-outline-primary">
-            Something Else
+          <button type="button" class="btn btn-outline-primary" v-on:click="showNothing">
+            Nothing Yet
           </button>
         </div>
       </div>
@@ -37,7 +37,7 @@
 
     <footer class="row mt-5 pt-3">
       <div class="col-12">
-        <p>Website | Github | LinkedIn | Twitter</p>
+        <p><a href="https://jaimemay.com" target="_new">Website</a> | <a href="https://github.com/codemay-dev" target="_new">Github</a> | <a href="https://www.linkedin.com/in/jaimemay/" target="_new">LinkedIn</a></p>
       </div>
     </footer>
   </div>
@@ -59,7 +59,7 @@ export default {
     return {
       isTasklist: true,
       isUsers: false,
-      isOther: false,
+      isNothing: false,
       tasks: [
         {
           title: "Task A",
@@ -88,17 +88,17 @@ export default {
     showTask() {
       this.isTasklist = true;
       this.isUsers = false;
-      this.isOther = false;
+      this.isNothing = false;
     },
     showUsers() {
       this.isTasklist = false;
       this.isUsers = true;
-      this.isOther = false;
+      this.isNothing = false;
     },
-    showOther() {
+    showNothing() {
       this.isTasklist = false;
       this.isUsers = false;
-      this.isOther = true;
+      this.isNothing = true;
     },
     addTask(title) {
       this.tasks.push({
