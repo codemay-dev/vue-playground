@@ -39,3 +39,16 @@ else
 	@ git rebase master
 	@ git stash pop
 endif
+
+push:
+ifeq ($(BRANCH),master)
+	$(info ******** Already On Master ********)
+	@echo "Currently on master, checkout branch"
+else
+	$(info ******** Rebase & Push Branch ********)
+	@ git checkout master
+	@ git pull
+	@ git checkout $(BRANCH)
+	@ git rebase master
+	@ git push origin $(BRANCH)
+endif
