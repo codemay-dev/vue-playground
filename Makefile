@@ -3,10 +3,15 @@ local:
 	@make build_local
 	@make run_local
 
-docker:
+docker_dev:
 	@make update_local
-	@make build_docker
-	@make run_docker
+	@make build_docker_dev
+	@make run_docker_dev
+
+docker_prod:
+	@make update_local
+	@make build_docker_prod
+	@make run_docker_prod
 
 build_local:
 	$(info ******** Building App ********)
@@ -16,11 +21,19 @@ run_local:
 	$(info ******** Starting App ********)
 	@ npm run serve
 
-build_docker:
+build_docker_dev:
 	$(info ******** Building Docker Container ********)
 	@ docker build -t vuejs-cookbook/dockerize-vuejs-app .
 
-run_docker:
+run_docker_dev:
+	$(info ******** Starting App ********)
+	@ docker run -it -p 8080:8080 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
+
+build_docker_prod:
+	$(info ******** Building Docker Container ********)
+	@ docker build -f dockerfile.prod -t vuejs-cookbook/dockerize-vuejs-app .
+
+run_docker_prod:
 	$(info ******** Starting App ********)
 	@ docker run -it -p 8080:80 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app
 
